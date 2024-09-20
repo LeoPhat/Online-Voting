@@ -11,12 +11,12 @@ jobs:
       - name: Run SonarQube on SonarCloud
         uses: sonarsource/sonarcloud-github-action@v3.0.0
         env:
-          GITHUB_TOKEN = ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN = ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.organization=LeoPhat
             -Dsonar.projectKey=leophat
+            -Dsonar.sources=.
 
   security:
     runs-on: ubuntu-latest
@@ -26,4 +26,4 @@ jobs:
       - name: Run Snyk Compostion Analytics Scan
         uses: snyk/actions/maven@master
         env:
-          SNYK_TOKEN = ${{ secrets.SNYK_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
