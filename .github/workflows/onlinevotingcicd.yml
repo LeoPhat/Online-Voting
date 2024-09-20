@@ -15,7 +15,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=LeoPhat
-            -Dsonar.projectKey=leophat
+            -Dsonar.projectKey=Online-Voting
             -Dsonar.sources=.
 
   security:
