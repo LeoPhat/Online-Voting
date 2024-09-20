@@ -17,7 +17,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=LeoPhat
-            -Dsonar.projectKey=online-voting-key
+            -Dsonar.projectKey=LeoPhat_Online-Voting
             -Dsonar.sources=.
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
