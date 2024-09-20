@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: main
+          ref: master
           fetch-depth: 0
       - name: Run SonarQube on SonarCloud
         uses: sonarsource/sonarcloud-github-action@v3.0.0
@@ -19,7 +19,7 @@ jobs:
             -Dsonar.organization=LeoPhat
             -Dsonar.projectKey=Online-Voting
             -Dsonar.sources=.
-            -Dsonar.branch.name=main
+            -Dsonar.branch.name=master
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
   security:
