@@ -5,12 +5,12 @@ jobs:
   sonarqube:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@master
         with:
           fetch-depth: 0
       - name: Run SonarQube on SonarCloud
         uses: sonarsource/sonarcloud-github-action@v3.0.0
-        continue-on-error: true
+        # continue-on-error: true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
@@ -18,6 +18,7 @@ jobs:
             -Dsonar.organization=LeoPhat
             -Dsonar.projectKey=Online-Voting
             -Dsonar.sources=.
+            -Dsonar.branch.name=main
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
   security:
