@@ -1,0 +1,28 @@
+name: CICD security scan for online voting app
+on: push
+
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Run SonarQube on SonarCloud
+        uses: sonarsource/sonarcloud-github-action@v3.0.0
+        env:
+          GITHUB_TOKEN = ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN = ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=LeoPhat
+            -Dsonar.projectKey=leophat
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk Compostion Analytics Scan
+        uses: snyk/actions/maven@master
+        env:
+          SNYK_TOKEN = ${{ secrets.SNYK_TOKEN }}
