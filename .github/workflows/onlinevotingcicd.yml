@@ -20,7 +20,7 @@ jobs:
             -Dsonar.projectKey=LeoPhat_Online-Voting
             -Dsonar.sources=.
             -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.java.binaries=target/classes
   security:
     runs-on: ubuntu-latest
     # needs: sonarqube
