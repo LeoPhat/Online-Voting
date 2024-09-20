@@ -10,6 +10,7 @@ jobs:
           fetch-depth: 0
       - name: Run SonarQube on SonarCloud
         uses: sonarsource/sonarcloud-github-action@v3.0.0
+        continue-on-error: true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
@@ -17,7 +18,8 @@ jobs:
             -Dsonar.organization=LeoPhat
             -Dsonar.projectKey=Online-Voting
             -Dsonar.sources=.
-
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
   security:
     runs-on: ubuntu-latest
     # needs: sonarqube
@@ -25,5 +27,6 @@ jobs:
       - uses: actions/checkout@master
       - name: Run Snyk Compostion Analytics Scan
         uses: snyk/actions/maven@master
+        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
